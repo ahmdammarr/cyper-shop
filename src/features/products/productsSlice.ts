@@ -21,6 +21,18 @@ export const getProducts = createAsyncThunk(
   }
 )
 
+export const getProductsByCategory = createAsyncThunk(
+  'product/getProducts',
+  async (category:string, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`https://fakestoreapi.com/products/category/${category}`)
+      return response.data
+    } catch (err) {
+      return rejectWithValue(err)
+    }
+  }
+)
+
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -35,6 +47,19 @@ export const productsSlice = createSlice({
       state.products = action.payload
     },
     [getProducts.rejected.toString()]: (state, action) => {
+      state.status = 'failed'
+
+      state.products = action.payload
+    },
+    [getProductsByCategory.pending.toString()]: state => {
+      state.status = 'loading'
+    },
+    [getProductsByCategory.fulfilled.toString()]: (state, action) => {
+      state.status = 'done'
+
+      state.products = action.payload
+    },
+    [getProductsByCategory.rejected.toString()]: (state, action) => {
       state.status = 'failed'
 
       state.products = action.payload

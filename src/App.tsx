@@ -2,14 +2,15 @@ import { useEffect } from 'react';
 
 import './App.css';
 import { useAppDispatch } from './app/hooks';
-import { getProducts } from './features/products/productsSlice';
+import { getProducts, getProductsByCategory } from './features/products/productsSlice';
 import  Products from 'features/products/Products';
 function App() {
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(getProducts())
-    //eslint-disable-next-line
-  }, [])
+   //dispatch(getProductsByCategory('jewelery')) 
+   //eslint-disable-next-line
+  }, [dispatch])
   return (
     <div className="App">
       <Products/>
