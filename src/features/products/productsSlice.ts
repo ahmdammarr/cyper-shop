@@ -1,11 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../../app/store'
 import axios from 'axios'
+import {ProductsState} from './types'
 
-export interface ProductsState {
-  products: any[]
-  status: 'done' | 'loading' | 'failed'
-}
 
 const initialState: ProductsState = {
   products: [],
@@ -46,7 +43,8 @@ export const productsSlice = createSlice({
 })
 
 
-export const selectProducts = (state: RootState) => state.products
+export const selectProducts = (state: RootState) => state.products.products
+export const selectStatus = (state: RootState) => state.products.status
 
 
 
