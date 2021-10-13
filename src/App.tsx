@@ -1,14 +1,18 @@
-import React from 'react';
+import {useEffect} from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
 
+import './App.css';
+import { useAppDispatch } from './app/hooks';
+import { getProducts } from './features/products/productsSlice';
 function App() {
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [])
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
