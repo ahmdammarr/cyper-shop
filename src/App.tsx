@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import logo from './logo.svg';
 
 import './App.css';
@@ -8,6 +8,7 @@ function App() {
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(getProducts())
+    //eslint-disable-next-line
   }, [])
   return (
     <div className="App">
