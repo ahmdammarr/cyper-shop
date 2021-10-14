@@ -1,1 +1,1 @@
-export {useProducts} from './productsHook'
+export {useProducts} from './useProducts'

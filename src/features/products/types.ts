@@ -8,7 +8,7 @@ export type Product = {
 }
 
 export type ProductsStateEnum = 'done' | 'loading' | 'failed'
-export interface ProductsState {
+export type ProductsState = {
     products: Product[]
     status: ProductsStateEnum
 }
