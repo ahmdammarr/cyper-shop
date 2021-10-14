@@ -3,10 +3,10 @@ import { useAppSelector } from '../../app/hooks'
 import { selectProducts, selectStatus } from './productsSlice'
 import { ProductsStateEnum } from './types'
 import ProductCard from './components/ProductCard'
-import { Loader } from 'app/components/Loader/Loader'
+import Loader from 'app/components/Loader/Loader'
 import { Badge } from 'react-bootstrap'
 
-export default function Products () {
+export default function Products() {
   const products = useAppSelector(selectProducts)
   const status = useAppSelector(selectStatus)
   const [_ProductsState, setProductsState] = useState<ProductsStateEnum>(
@@ -52,5 +52,5 @@ export default function Products () {
     )
   }
 
-  return <div className='row'>{ProductsState[_ProductsState]}</div>
+  return <div className='row p-2'>{ProductsState[_ProductsState]}</div>
 }

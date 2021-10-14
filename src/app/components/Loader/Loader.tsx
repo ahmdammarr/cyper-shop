@@ -16,6 +16,6 @@ const defaultOptions = {
     height?:  number
   }
   
-  export function Loader ({ width, height }: LoaderProps): React.ReactElement {
+  export default function Loader ({ width, height }: LoaderProps): React.ReactElement {
     return <Lottie options={defaultOptions} height={height} width={width} />
   }
