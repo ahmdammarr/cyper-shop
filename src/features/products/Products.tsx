@@ -1,5 +1,5 @@
 import { useState, useEffect, ReactElement } from 'react'
-import { useAppSelector } from '../../app/hooks'
+import { useAppSelector } from 'app/reduxHooks'
 import { selectProducts, selectStatus } from './productsSlice'
 import { ProductsStateEnum } from './types'
 import ProductCard from './components/ProductCard'
@@ -34,7 +34,6 @@ export default function Products() {
     ),
     done: (
       <>
-        {' '}
         {products?.map(
           ({ id, title, image, description, category, price }, _) => (
             <ProductCard
@@ -52,5 +51,5 @@ export default function Products() {
     )
   }
 
-  return <div className='row p-2'>{ProductsState[_ProductsState]}</div>
+  return <div className='row p-3'>{ProductsState[_ProductsState]}</div>
 }

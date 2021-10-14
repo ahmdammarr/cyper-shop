@@ -15,7 +15,9 @@ function ProductCard ({
 }: Product) {
   return (
     <div className='col-3 p-2'>
-      <Card style={{ width: '22rem', height: '28rem' }}>
+      <Card 
+     // className="col-3 p-2"
+      style={{  height: '28rem' }}>
         <Card.Img style={{ height: '40%' }} variant='top' src={image} />
         <Card.Body>
           <Card.Title>
