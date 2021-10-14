@@ -1,18 +1,28 @@
 import { useEffect, useState, ReactElement } from 'react'
 import { ProductsStateEnum } from 'features/products/types'
-import { Navbar, Container, Nav as BootstrapNav, NavDropdown } from 'react-bootstrap'
+import {
+  Navbar,
+  Container,
+  Nav as BootstrapNav,
+  NavDropdown
+} from 'react-bootstrap'
 import { useProducts } from 'features/products/hooks'
 import Loader from '../Loader'
 import { Badge } from 'react-bootstrap'
+import { useAppDispatch } from 'app/reduxHooks'
+import { getProductsByCategory } from 'features/products/productsSlice'
 
 function Nav () {
   const { state, products } = useProducts()
   const [_State, setState] = useState<ProductsStateEnum>('loading')
-  console.log(
-    'products',
-    new Set([...products.map(products => products.category)])
-  )
+  const dispatch = useAppDispatch()
   const [Categories, setCategories] = useState<string[]>([])
+  const [SelectedCategory, setSelectedCategory] = useState('')
+  useEffect(() => {
+    if (SelectedCategory) {
+      dispatch(getProductsByCategory(SelectedCategory))
+    }
+  }, [SelectedCategory, dispatch])
   useEffect(() => {
     if (state === 'loading') {
       setState('loading')
@@ -24,7 +34,7 @@ function Nav () {
         Array.from(new Set([...products.map(products => products.category)]))
       )
     }
-  }, [state,products])
+  }, [state, products])
   const CategoriesState: { [key in ProductsStateEnum]: ReactElement } = {
     loading: <Loader width={50} />,
     failed: (
@@ -39,7 +49,9 @@ function Nav () {
       <>
         <>
           {Categories?.map(category => (
-            <NavDropdown.Item>{category}</NavDropdown.Item>
+            <NavDropdown.Item onClick={() => setSelectedCategory(category)}>
+              {category}
+            </NavDropdown.Item>
           ))}
         </>
       </>

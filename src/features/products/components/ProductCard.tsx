@@ -20,12 +20,12 @@ function ProductCard ({
       style={{  height: '28rem' }}>
         <Card.Img style={{ height: '40%' }} variant='top' src={image} />
         <Card.Body>
-          <Card.Title>
-            {truncateText(title, 20)}
+          <Card.Title  style={{ height: '20%' }}>
+            {truncateText(title, 30)}
             {title.length > 20 ? '...' : null}
           </Card.Title>
-          <Card.Text>
-            {truncateText(description, 40)}
+          <Card.Text style={{ height: '30%' }}>
+            {truncateText(description, 60)}
             {description.length > 40 ? '...' : null}
           </Card.Text>
           <Card.Text>

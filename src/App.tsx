@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import './App.css';
-import { useAppDispatch } from './app/reduxHooks';
+import { useAppDispatch } from 'app/reduxHooks';
 import { getProducts } from './features/products/productsSlice';
 import  Products from 'features/products/Products';
 import Nav from 'app/components/Nav';
